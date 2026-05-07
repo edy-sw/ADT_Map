@@ -7,9 +7,9 @@ using namespace std;
 // Best Case: Theta(1)
 // Worst Case: Theta(1)
 // Total Complexity: Theta(1)
-MapIterator::MapIterator(const Map& d) : map(d)
+MapIterator::MapIterator(const Map& m) : map(m)
 {
-	this->current = d.head;
+	this->current = m.head;
 }
 
 
@@ -25,7 +25,7 @@ void MapIterator::first() {
 // Worst Case: Theta(1)
 // Total Complexity: Theta(1)
 void MapIterator::next() {
-	if (this->current == nullptr) {
+	if (!this->valid()) {
 		throw std::exception();
 	}
 	this->current = this->current->next;
@@ -36,7 +36,7 @@ void MapIterator::next() {
 // Worst Case: Theta(1)
 // Total Complexity: Theta(1)
 TElem MapIterator::getCurrent(){
-	if (this->current == nullptr) {
+	if (!this->valid()) {
 		throw std::exception();
 	}
 	return this->current->info;
